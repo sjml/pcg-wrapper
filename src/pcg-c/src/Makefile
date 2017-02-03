@@ -50,3 +50,4 @@ pcg-output-128.o: pcg-output-128.c ../include/pcg_variants.h
 pcg-global-32.o: pcg-global-32.c ../include/pcg_variants.h
 pcg-global-64.o: pcg-global-64.c ../include/pcg_variants.h
 
+endif
