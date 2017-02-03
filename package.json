@@ -13,6 +13,10 @@
     "prng"
   ],
   "author": "Shane Liesegang <shane@techie.net>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sjml/pcg-wrapper.git"
+  },
   "license": "MIT",
   "devDependencies": {
     "chai": "^3.5.0",

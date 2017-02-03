@@ -8,7 +8,8 @@
               "action_name": "build_libpcg",
               "inputs": [],
               "outputs": [ "<(module_root_dir)/src/pcg-c/src/libpcg_random.a" ],
-              "action": [ "make", "-C", "<(module_root_dir)/src/pcg-c/src"]
+              "action": [ "make", "-C", "<(module_root_dir)/src/pcg-c/src"],
+              "message": "Building the PCG library from source."
           }
       ]
     },
