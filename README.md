@@ -50,14 +50,18 @@ index += 1; // (or you could do index++ in previous line)
 ```
 
 ## Clarifications and caveats
-Description of the seeds is slightly inaccurate, but close enough for what we 
-care about. If you're  curious as to what these values actually map to, check 
-out the  [PCG C library documentation](http://www.pcg-random.org/using-pcg-c.html).
-These values correspond to the low and high bits of the seed and sequence.
+* Description of the seeds is slightly inaccurate, but close enough for what we 
+  care about. If you're  curious as to what these values actually map to, check 
+  out the [PCG C library documentation](http://www.pcg-random.org/using-pcg-c.html).
+  The "seeds" here correspond to the low and high bits of the seed and sequence.
 
-There is a mild performance hit as the index climbs higher; in my testing on a 
-2.6 GHz Intel Core i5, it amounted to 20-40 nanoseconds at the worst. Safely
-negligible in most contexts. 
+* There is a mild performance hit as the index climbs higher; in my testing on a 
+  2.6 GHz Intel Core i5, it amounted to 20-40 nanoseconds at the worst. Safely
+  negligible in most contexts. 
 
-The index is presently limited to the range of 32-bit unsigned integers, and 
-you'll get an exception if you exceed that range.
+* The index is presently limited to the range of 64-bit unsigned integers, and 
+  you'll get an exception if you exceed that range.
+
+* JavaScript numbers are limited to 53-bits, so if you want to pass a larger value,
+  you need to convert it to a string first. The native layer will convert it into
+  a 64-bit integer for the calculation.
