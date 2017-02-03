@@ -2,16 +2,27 @@
   "targets": [
     {
       "target_name": "libpcg",
-      "type": "none",
-      "actions": [
-          {
-              "action_name": "build_libpcg",
-              "inputs": [],
-              "outputs": [ "<(module_root_dir)/src/pcg-c/src/libpcg_random.a" ],
-              "action": [ "make", "-C", "<(module_root_dir)/src/pcg-c/src"],
-              "message": "Building the PCG library from source."
-          }
-      ]
+      "type": "static_library",
+      "sources": [
+        "src/pcg-c/src/pcg-advance-128.c",
+        "src/pcg-c/src/pcg-advance-16.c",
+        "src/pcg-c/src/pcg-advance-32.c",
+        "src/pcg-c/src/pcg-advance-64.c",
+        "src/pcg-c/src/pcg-advance-8.c",
+        "src/pcg-c/src/pcg-global-32.c",
+        "src/pcg-c/src/pcg-global-64.c",
+        "src/pcg-c/src/pcg-output-128.c",
+        "src/pcg-c/src/pcg-output-16.c",
+        "src/pcg-c/src/pcg-output-32.c",
+        "src/pcg-c/src/pcg-output-64.c",
+        "src/pcg-c/src/pcg-output-8.c",
+        "src/pcg-c/src/pcg-rngs-128.c",
+        "src/pcg-c/src/pcg-rngs-16.c",
+        "src/pcg-c/src/pcg-rngs-32.c",
+        "src/pcg-c/src/pcg-rngs-64.c",
+        "src/pcg-c/src/pcg-rngs-8.c"
+      ],
+      "include_dirs": [ "src/pcg-c/include" ]
     },
     {
       "target_name": "pcg",

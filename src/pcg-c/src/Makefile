@@ -4,10 +4,6 @@ OBJS = pcg-advance-8.o pcg-advance-16.o pcg-advance-32.o pcg-advance-64.o \
        pcg-rngs-32.o pcg-rngs-64.o pcg-rngs-128.o \
        pcg-global-32.o pcg-global-64.o
 
-ifneq ($(MAKEFLAGS),w)
-all:
-    export MAKEFLAGS=-w && $(MAKE)
-else
 CPPFLAGS += -I../include
 CFLAGS += -O3
 CFLAGS   += -std=c99
@@ -50,4 +46,3 @@ pcg-output-128.o: pcg-output-128.c ../include/pcg_variants.h
 pcg-global-32.o: pcg-global-32.c ../include/pcg_variants.h
 pcg-global-64.o: pcg-global-64.c ../include/pcg_variants.h
 
-endif
