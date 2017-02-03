@@ -1,0 +1,38 @@
+# PCG for Node.js
+
+This is a wrapper module for the [PCG random number generator](http://www.pcg-random.org).
+
+PCG is not cryptographically secure, and it's got a couple other weaknesses,
+but it also has a few qualities that make it useful for games. Namely, it's fast,
+repeatable, and can easily jump to anywhere in its sequence given the seed and 
+an index. Thus we can replay the random generation from any point in the sequence,
+which is helpful for game playback and logging of randomness. 
+
+## Usage
+### Pull a specific integer from a sequence. 
+PCG needs four unsigned 32-bit integers as its seeds. (See Clarifications 
+section below.)  You can pass these four integers in along with an index to 
+get that number in the sequence. 
+
+```js
+var pcg = require('pcg-wrapper');
+
+var randomInteger = pcg.randomIntPull(4, 8, 15, 16, 2342);
+console.log(randomInteger); // will always output 3275776275
+```
+
+Note that the same seeds and index will *always* produce the same number. Make 
+sure you advance the index every time you want a new random number. 
+
+## Clarifications and caveats
+Description of the seeds is slightly inaccurate, but close enough for what we 
+care about. If you're  curious as to what these values actually map to, check 
+out the  [PCG C library documentation](http://www.pcg-random.org/using-pcg-c.html).
+These values correspond to the low and high bits of the seed and sequence.
+
+There is a mild performance hit as the index climbs higher; in my testing on a 
+2.6 GHz Intel Core i5, it amounted to 20-40 nanoseconds at the worst. Safely
+negligible in most contexts. 
+
+The index is presently limited to the range of 32-bit unsigned integers, and 
+you'll get an exception if you exceed that range.

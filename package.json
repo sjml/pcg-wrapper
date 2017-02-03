@@ -1,0 +1,22 @@
+{
+  "name": "pcg-wrapper",
+  "version": "0.0.1",
+  "description": "A module wrapping the native C implementation of the PCG pseudorandom number generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "pcg",
+    "c",
+    "native",
+    "prng"
+  ],
+  "author": "Shane Liesegang <shane@techie.net>",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "node-gyp": "^3.5.0"
+  }
+}
