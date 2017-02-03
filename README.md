@@ -27,6 +27,26 @@ console.log(randomInteger); // will always output 3275776275
 Note that the same seeds and index will *always* produce the same number. Make 
 sure you advance the index every time you want a new random number. 
 
+### Seed values
+You can get some initial seed values in all kinds of ways. To pull them from
+Node's approved randomness sources: 
+
+```js
+var seed = crypto.randomBytes(16);
+
+var dv = new DataView(seed.buffer, 0);
+
+var s1 = dv.getUint32(0);
+var s2 = dv.getUint32(4);
+var s3 = dv.getUint32(8);
+var s4 = dv.getUint32(12);
+
+var index = 0;
+
+pcg.randomIntPull(s1, s2, s3, s4, index);
+index += 1; // (or you could do index++ in previous line)
+```
+
 ## Clarifications and caveats
 Description of the seeds is slightly inaccurate, but close enough for what we 
 care about. If you're  curious as to what these values actually map to, check 
