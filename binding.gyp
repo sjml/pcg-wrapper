@@ -3,6 +3,7 @@
     {
       "target_name": "libpcg",
       "type": "static_library",
+      "cflags": "-std=c99",
       "sources": [
         "src/pcg-c/src/pcg-advance-128.c",
         "src/pcg-c/src/pcg-advance-16.c",
