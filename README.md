@@ -1,5 +1,8 @@
 # PCG for Node.js
 
+[![Mac/Linux Status](https://travis-ci.org/sjml/pcg-wrapper.svg?branch=master)](https://travis-ci.org/sjml/pcg-wrapper)
+[![Windows build status](https://ci.appveyor.com/api/projects/status/36yvs70egyhwvevt?svg=true)](https://ci.appveyor.com/project/sjml/pcg-wrapper)
+
 This is a wrapper module for the [PCG random number generator](http://www.pcg-random.org).
 
 PCG is not cryptographically secure, and it's got a couple other weaknesses,
