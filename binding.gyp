@@ -28,9 +28,7 @@
     {
       "target_name": "pcg",
       "sources": [ "src/pcg-js.cpp" ],
-      "dependencies": [ "libpcg" ],
-      "link_settings": {
-          "libraries": ["-lpcg_random", "-L<(module_root_dir)/src/pcg-c/src"]
+      "dependencies": [ "libpcg" ]
       }
     }
   ]
