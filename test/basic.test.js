@@ -16,7 +16,7 @@ describe('Basic setup and linking', function () {
     expect(randomInteger).to.equal(3275776275);
   });
 
-  it('native function cannot take a number > 2^32 - 1', function () {
+  it('native function cannot take an index > 2^32 - 1', function () {
     expect(function() { pcg._randomIntPull(4, 8, 15, 16, 4294967297); }).to.throw(TypeError);
   });
 
@@ -35,4 +35,8 @@ describe('Basic setup and linking', function () {
   it('rejects negative string indices', function () {
     expect(function() { pcg.randomIntPull(4, 8, 15, 16, "-429496725"); }).to.throw(TypeError);
   });
+
+  it('rejects indices greater than 2^64 - 1', function () {
+    expect(function() { pcg.randomIntPull(4, 8, 15, 16, "18446744073709551616"); }).to.throw(TypeError);
+  })
 });

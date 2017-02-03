@@ -23,6 +23,7 @@ void RandomIntPull(const v8::FunctionCallbackInfo<v8::Value>& args) {
     }
 
     uint64_t index = 0;
+    uint64_t oldIndex = 0;
     char const * indexFormatException = "index must be a string representing a large integer or an unsigned 32-bit integer (0 - 4294967295)";
     if (!args[4]->IsUint32()) {
         if (!args[4]->IsString()) {
@@ -39,7 +40,12 @@ void RandomIntPull(const v8::FunctionCallbackInfo<v8::Value>& args) {
             }
             for (unsigned int i=0; (*stringIndex)[i] != '\0'; ++i) {
                 if ( (*stringIndex)[i] >= '0' && (*stringIndex)[i] <= '9' ) {
+                    oldIndex = index;
                     index = index * 10 + (*stringIndex)[i] - '0';
+                    if (index < oldIndex) {
+                        isolate->ThrowException(v8::Exception::TypeError(
+                            v8::String::NewFromUtf8(isolate, indexFormatException)));
+                    }
                 }
                 else {
                     isolate->ThrowException(v8::Exception::TypeError(
@@ -52,13 +58,13 @@ void RandomIntPull(const v8::FunctionCallbackInfo<v8::Value>& args) {
         index = (uint64_t) args[4]->Uint32Value();
     }
 
-    uint32_t seedLow   = args[0]->Uint32Value();
-    uint32_t seedHigh  = args[1]->Uint32Value();
-    uint32_t stateLow  = args[2]->Uint32Value();
-    uint32_t stateHigh = args[3]->Uint32Value();
+    uint32_t stateLow  = args[0]->Uint32Value();
+    uint32_t stateHigh = args[1]->Uint32Value();
+    uint32_t seqLow    = args[2]->Uint32Value();
+    uint32_t seqHigh   = args[3]->Uint32Value();
 
-    uint64_t state = (uint64_t) seedHigh << 32 | seedLow;
-    uint64_t seq   = (uint64_t) stateHigh << 32 | stateLow;
+    uint64_t state = (uint64_t) stateHigh << 32 | stateLow;
+    uint64_t seq   = (uint64_t) seqHigh << 32 | seqLow;
 
     pcg32_random_t rng;
     pcg32_srandom_r(&rng, state, seq);
