@@ -25,14 +25,14 @@ describe('Basic setup and linking', function () {
   });
 
   it('rejects negative numbers in seeds', function () {
-    expect(function() { pcg._randomIntPull(-4, 8, 15, 16, 429496725); }).to.throw(TypeError);
+    expect(function() { pcg.randomIntPull(-4, 8, 15, 16, 429496725); }).to.throw(TypeError);
   });
 
   it('rejects negative numbers in indices', function () {
-    expect(function() { pcg._randomIntPull(4, 8, 15, 16, -429496725); }).to.throw(TypeError);
+    expect(function() { pcg.randomIntPull(4, 8, 15, 16, -429496725); }).to.throw(TypeError);
   });
 
   it('rejects negative string indices', function () {
-    expect(function() { pcg._randomIntPull(4, 8, 15, 16, "-429496725"); }).to.throw(TypeError);
+    expect(function() { pcg.randomIntPull(4, 8, 15, 16, "-429496725"); }).to.throw(TypeError);
   });
 });

@@ -2,7 +2,7 @@
 //   Install dieharder via homebrew or whatever you like, then run:
 //           dieharder -a -g 202 -f bigRandom.txt
 //
-//   Note that this will fail or be shamed as "WEAK" on a few of the test.
+//   Note that this will fail or be shamed as "WEAK" on a few of the tests.
 //     That's ok; this isn't meant to be a secure number generator. If
 //     It fails more than a few tests, though, that probably means something
 //     is wrong with the library or the wrapping.
