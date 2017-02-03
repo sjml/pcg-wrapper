@@ -1,7 +1,7 @@
 {
   "name": "pcg-wrapper",
-  "version": "0.0.1",
-  "description": "A module wrapping the native C implementation of the PCG pseudorandom number generator",
+  "version": "1.0.0",
+  "description": "wraps the native C implementation of the PCG pseudorandom number generator",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
