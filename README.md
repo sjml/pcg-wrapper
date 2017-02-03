@@ -32,7 +32,9 @@ You can get some initial seed values in all kinds of ways. To pull them from
 Node's approved randomness sources: 
 
 ```js
-var seed = crypto.randomBytes(16);
+const crypto = require('crypto');
+
+var seed = crypto.randomBytes(16); // == 128 bits == four 32-bit integers
 
 var dv = new DataView(seed.buffer, 0);
 
