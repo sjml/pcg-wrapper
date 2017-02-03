@@ -29,7 +29,6 @@
       "target_name": "pcg",
       "sources": [ "src/pcg-js.cpp" ],
       "dependencies": [ "libpcg" ]
-      }
     }
   ]
 }
