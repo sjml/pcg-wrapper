@@ -55,9 +55,11 @@ index += 1; // (or you could do index++ in previous line)
   out the [PCG C library documentation](http://www.pcg-random.org/using-pcg-c.html).
   The "seeds" here correspond to the low and high bits of the seed and sequence.
 
-* There is a mild performance hit as the index climbs higher; in my testing on a 
-  2.6 GHz Intel Core i5, it amounted to 20-40 nanoseconds at the worst. Safely
-  negligible in most contexts. 
+* There is a mild decline in performance as the index climbs higher; in my testing 
+  on a 2.6 GHz Intel Core i5, it amounted to a few hundred nanoseconds at the worst. 
+  Safely negligible in most contexts, but something to be aware of. 
+  * The biggest dip in performance comes as the index crosses the 32-bit
+    limit; doing the work to convert strings to integers isn't free.
 
 * The index is presently limited to the range of 64-bit unsigned integers, and 
   you'll get an exception if you exceed that range.
