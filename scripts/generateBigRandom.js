@@ -1,5 +1,6 @@
 // Generates a file of 10 million random numbers for testing by dieharder
 //   Install dieharder via homebrew or whatever you like, then run:
+//           node generateBigRandom.js
 //           dieharder -a -g 202 -f bigRandom.txt
 //
 //   Note that this will fail or be shamed as "WEAK" on a few of the tests.

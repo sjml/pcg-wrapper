@@ -28,7 +28,8 @@
     {
       "target_name": "pcg",
       "sources": [ "src/pcg-js.cpp" ],
-      "dependencies": [ "libpcg" ]
+      "dependencies": [ "libpcg" ],
+      "include_dirs": [ "<!(node -e \"require('nan')\")" ]
     }
   ]
 }
